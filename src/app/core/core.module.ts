@@ -3,15 +3,22 @@ import {SharedModule} from "../shared/shared.module";
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatToolbarModule} from "@angular/material";
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
+  declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
-    SharedModule
-  ],
-  declarations: [HeaderComponent, SidebarComponent, FooterComponent]
+    SharedModule,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent
+  ]
 })
 
 export class CoreModule {
