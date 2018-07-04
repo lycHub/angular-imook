@@ -4,13 +4,19 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatToolbarModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatIconRegistry, MatToolbarModule} from "@angular/material";
+import {HttpClientModule} from "@angular/common/http";
+import {DomSanitizer} from "@angular/platform-browser";
+import {loadSvgResources} from "../utils/svg";
 
 @NgModule({
   imports: [
     SharedModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
@@ -23,9 +29,12 @@ import {MatToolbarModule} from "@angular/material";
 
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    if (parentModule) {
+  constructor(@Optional() @SkipSelf() private parentModule: CoreModule,
+    private ir: MatIconRegistry,
+    private ds: DomSanitizer) {
+    if (this.parentModule) {
       throw new Error('CoreModule 已经装载，请仅在 AppModule 中引入该模块。');
     }
+    loadSvgResources(this.ir, this.ds);
   }
 }

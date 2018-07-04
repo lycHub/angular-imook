@@ -8,7 +8,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class HeaderComponent {
   @Output() protected toggle: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   openSidebar(): void {
     this.toggle.emit();

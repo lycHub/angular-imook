@@ -1,6 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button (click)="openSidebar()">菜单</button>
+    <button mat-icon-button (click)="openSidebar()">
+      <mat-icon (click)="openSidebar()">menu</mat-icon>
+    </button>
+
+    <!--
+    使用svg
+    <mat-icon svgIcon="move"></mat-icon>
+    -->
     <span>企业协作平台</span>
   </mat-toolbar-row>
 </mat-toolbar>
