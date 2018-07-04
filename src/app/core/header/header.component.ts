@@ -10,7 +10,7 @@ export class HeaderComponent {
 
   constructor() {}
 
-  openSidebar(): void {
+  toggleSidebar(): void {
     this.toggle.emit();
   }
 

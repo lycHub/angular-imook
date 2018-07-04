@@ -4,23 +4,22 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatIconModule, MatIconRegistry, MatToolbarModule} from "@angular/material";
+import {MatIconRegistry} from "@angular/material";
 import {HttpClientModule} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
 import {loadSvgResources} from "../utils/svg";
+import {LoginModule} from "../login/login.module";
 
 @NgModule({
   imports: [
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule
+    LoginModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
-    SharedModule,
+    // SharedModule,
     HeaderComponent,
     SidebarComponent,
     FooterComponent
