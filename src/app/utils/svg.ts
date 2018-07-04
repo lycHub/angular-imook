@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 // 注册svg，在coreModule中加载，其它地方都可用
 export const loadSvgResources = (ir: MatIconRegistry, ds: DomSanitizer) => {
-  const imgDir = '../assets/img';
+  const imgDir = '/assets/img';
   const avatarDir = `${imgDir}/avatar`;
   const sidebarDir = `${imgDir}/sidebar`;
   const iconDir = `${imgDir}/icons`;
