@@ -10,6 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {loadSvgResources} from "../utils/svg";
 import {LoginModule} from "../login/login.module";
 import {ProjectModule} from "../project/project.module";
+import {TaskModule} from "../task/task.module";
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {ProjectModule} from "../project/project.module";
     BrowserAnimationsModule,
     HttpClientModule,
     LoginModule,
-    ProjectModule
+    ProjectModule,
+    TaskModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
