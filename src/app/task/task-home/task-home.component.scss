@@ -1,11 +1,3 @@
-.fab-button {
-  position: fixed;
-  right: 32px;
-  bottom: 96px;
-  z-index: 998;
-}
-
-
 .drag-start {
   opacity: 0.5;
   border: #ff525b dashed 2px;
@@ -28,4 +20,14 @@
   justify-content: flex-start;
   align-content: flex-start;
   overflow-x: scroll;
+}
+.fab-button {
+  position: fixed;
+  right: 32px;
+  bottom: 96px;
+  z-index: 998;
+}
+:host {
+  width: 100%;
+  height: 100%;
 }
