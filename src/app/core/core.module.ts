@@ -9,13 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
 import {loadSvgResources} from "../utils/svg";
 import {LoginModule} from "../login/login.module";
+import {ProjectModule} from "../project/project.module";
 
 @NgModule({
   imports: [
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    ProjectModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
