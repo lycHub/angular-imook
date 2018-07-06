@@ -11,19 +11,22 @@ import {loadSvgResources} from "../utils/svg";
 import {LoginModule} from "../login/login.module";
 import {ProjectModule} from "../project/project.module";
 import {TaskModule} from "../task/task.module";
+import {AppRoutingModule} from "../app-routing.module";
 
 @NgModule({
   imports: [
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AppRoutingModule,
     LoginModule,
     ProjectModule,
     TaskModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
-    // SharedModule,
+    AppRoutingModule,
+    SharedModule,
     HeaderComponent,
     SidebarComponent,
     FooterComponent

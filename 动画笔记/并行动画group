@@ -1,0 +1,22 @@
+同时在进场和离场时使用了组，以便能让它们使用两种不同的时间线配置。 它们被同时应用到同一个元素上，但又彼此独立运行
+
+animations: [
+ trigger('routeAnim', [
+   state('void', style({'width': '100%', 'height': '100%'})),
+   state('*', style({'width': '100%', 'height': '100%'})),
+   transition(':enter', [
+     style({transform: 'translateX(-100%)'}),
+     group([
+       animate('.5s ease-in-out', style({transform: 'translateX(0)'})),
+       animate('.3s ease-in', style({opacity: 1})),
+     ])
+   ]),
+   transition(':leave', [
+     style({transform: 'translateX(0)'}),
+     group([
+       animate('.5s ease-in-out', style({transform: 'translateX(100%)'})),
+       animate('.3s ease-in', style({opacity: 0})),
+     ])
+   ])
+ ]);
+]
