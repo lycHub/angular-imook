@@ -1,5 +1,5 @@
 <form>
-  <h3 mat-dialog-title>新建任务</h3>
+  <h3 mat-dialog-title>{{title}}</h3>
   <div mat-dialog-content>
     <mat-form-field class="full-width">
       <input matInput placeholder="任务内容" />
@@ -11,14 +11,12 @@
 
     <mat-form-field>
       <input matInput [matDatepicker]="dueDatepicker" placeholder="任务截止日期" />
-      <!--<button type="button" matSuffix [matDatepickerToggle]="dueDatepicker"></button>-->
       <mat-datepicker-toggle matSuffix [for]="dueDatepicker"></mat-datepicker-toggle>
     </mat-form-field>
     <mat-datepicker #dueDatepicker></mat-datepicker>
 
     <mat-form-field>
       <input matInput [matDatepicker]="reminderDatepicker" placeholder="任务提醒日期" />
-      <!--<button type="button" matSuffix [matDatepickerToggle]="reminderDatepicker"></button>-->
       <mat-datepicker-toggle matSuffix [for]="reminderDatepicker"></mat-datepicker-toggle>
     </mat-form-field>
     <mat-datepicker #reminderDatepicker></mat-datepicker>
