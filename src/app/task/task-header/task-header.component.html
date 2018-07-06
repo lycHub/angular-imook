@@ -4,7 +4,7 @@
   </div>
 
   <div class="fill">
-    <button mat-button>
+    <button mat-button (click)="onNewTask()">
       <mat-icon>add_circle_outline</mat-icon>
       <span>新任务</span>
     </button>
@@ -24,7 +24,7 @@
     <span>修改列表名称</span>
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onMoveAllClick()">
     <mat-icon [svgIcon]="'move'" class="material-icon"></mat-icon>
     <span>移动本列表所有内容</span>
   </button>
