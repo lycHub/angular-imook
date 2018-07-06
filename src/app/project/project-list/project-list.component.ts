@@ -37,8 +37,8 @@ export class ProjectListComponent implements OnInit {
 
   // 修改项目
   launchUpdateDialog(): void {
-    his.dialog.open(NewProjectComponent, {data: {title: '编辑项目'}});
-  }t
+    const dialogRef = this.dialog.open(NewProjectComponent, {data: {title: '编辑项目'}});
+  }
 
 
   // 删除项目

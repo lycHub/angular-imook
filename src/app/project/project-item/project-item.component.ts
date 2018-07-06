@@ -1,9 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {cardAnim} from "../../anims/card.anim";
 
 @Component({
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
-  styleUrls: ['./project-item.component.scss']
+  styleUrls: ['./project-item.component.scss'],
+  animations: [cardAnim]
 })
 export class ProjectItemComponent {
   @Input() item;
@@ -15,8 +17,22 @@ export class ProjectItemComponent {
 
   @Output() onDel: EventEmitter<void> = new EventEmitter();
 
+
+  // 给自身绑定一个属性，相当于<app-project-item [@card]="cardState"></app-project-item>
+  @HostBinding('@card') cardState = 'out';
+
   constructor() { }
 
+  // 可以有第二个参数 ['$event.target']
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.cardState = 'hover';
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.cardState = 'out';
+  }
 
   onInviteClick() {
     this.onInvite.emit();
