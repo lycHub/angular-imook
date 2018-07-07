@@ -5,6 +5,7 @@ import {CopyTaskComponent} from "../copy-task/copy-task.component";
 import {ConfirmDialogComponent} from "../../shared/confirm-dialog/confirm-dialog.component";
 import {NewTaskListComponent} from "../new-task-list/new-task-list.component";
 import {slideToRight} from "../../anims/router.anim";
+import {DragData} from "../../directive/drag-drop/drag-drop.service";
 
 @Component({
   selector: 'app-task-home',
@@ -118,4 +119,16 @@ export class TaskHomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => console.log(result));
   }
 
+
+  // 拖拽结束
+  handleMove(dragData: DragData, list: any): void {
+    switch (dragData.tag) {
+      case 'task-item':
+        console.log('task - item');
+        break;
+      case 'task-list':
+        console.log('task - list');
+        break;
+    }
+  }
 }

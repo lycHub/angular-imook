@@ -1,4 +1,8 @@
 <mat-list-item class="container"
+ [app-drag]="true"
+ [draggedClass]="'drag-start'"
+ [dragTag]="'task-item'"
+ [dragData]="item"
  [@item]="widerPriority"
  (click)="onItemClick()"
 [ngClass]="{ 'priority-normal': item.priority === 3,
