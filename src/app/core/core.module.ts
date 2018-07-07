@@ -12,6 +12,7 @@ import {LoginModule} from "../login/login.module";
 import {ProjectModule} from "../project/project.module";
 import {TaskModule} from "../task/task.module";
 import {AppRoutingModule} from "../app-routing.module";
+import {ServicesModule} from "../services/services.module";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {AppRoutingModule} from "../app-routing.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    ServicesModule.forRoot(),
     LoginModule,
     ProjectModule,
     TaskModule

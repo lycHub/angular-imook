@@ -18,6 +18,7 @@ export class TaskHomeComponent implements OnInit {
   lists = [{
     id: 1,
     name: '待办',
+    order: 1,
     tasks: [{
       id: 1,
       desc: '任务一：去买杯咖啡',
@@ -45,6 +46,7 @@ export class TaskHomeComponent implements OnInit {
   }, {
     id: 2,
     name: '进行中',
+    order: 2,
     tasks: [{
       id: 1,
       desc: '任务三：审核代码',
@@ -128,6 +130,9 @@ export class TaskHomeComponent implements OnInit {
         break;
       case 'task-list':
         console.log('task - list');
+        const taskList = dragData.data;
+
+        [taskList.order, list.order] = [list.order, taskList.order];
         break;
     }
   }
