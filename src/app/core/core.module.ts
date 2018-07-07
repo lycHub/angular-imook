@@ -30,6 +30,11 @@ import {AppRoutingModule} from "../app-routing.module";
     HeaderComponent,
     SidebarComponent,
     FooterComponent
+  ],
+  providers: [
+    {provide: 'BASE_CONFIG', useValue: {
+      uri: 'http://localhost:3000'
+    }},
   ]
 })
 
