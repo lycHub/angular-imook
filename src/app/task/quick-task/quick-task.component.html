@@ -1,0 +1,9 @@
+<mat-form-field class="full-width">
+  <input matInput placeholder="快速创建任务" [(ngModel)]="desc" />
+  <button matSuffix mat-icon-button type="button" (click)="sendClickTask()"><mat-icon>send</mat-icon></button>
+  <mat-error>不能为空</mat-error>
+</mat-form-field>
+
+
+<!--<div>表单数据：{{f.value | json}}</div>-->
+<!--<div>验证状态：{{f.valid | json}}</div>-->
