@@ -1,28 +1,28 @@
-<form  class="form">
+<form class="form" [formGroup]="form" (ngSubmit)="onsubmit(form, $event)">
   <mat-card>
     <mat-card-header>
       <mat-card-title>注册</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Email" />
+        <input matInput placeholder="Email" formControlName="email" />
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="姓名" />
+        <input matInput placeholder="姓名" formControlName="name" />
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="密码" />
+        <input matInput type="password" placeholder="密码" formControlName="password" />
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="确认密码" />
+        <input matInput type="password" placeholder="确认密码" formControlName="repeat" />
       </mat-form-field>
 
       <!--头像-->
-      <mat-grid-list cols="6">
-        <mat-grid-tile *ngFor="let item of items;">
-          <mat-icon class="avatar" [svgIcon]="item"></mat-icon>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <app-image-list-select
+      [useSvgIcon]="true"
+      [items]="items"
+      formControlName="avatar">
+      </app-image-list-select>
 
 
       <button mat-raised-button type="button">注册</button>
