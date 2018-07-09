@@ -35,7 +35,7 @@ import {ServicesModule} from "../services/services.module";
   ],
   providers: [
     {provide: 'BASE_CONFIG', useValue: {
-      uri: 'http://localhost:3000'
+      uri: 'http://localhost:3306'
     }},
   ]
 })

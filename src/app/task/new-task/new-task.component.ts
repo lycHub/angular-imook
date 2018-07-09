@@ -27,4 +27,10 @@ export class NewTaskComponent implements OnInit {
     console.log(JSON.stringify(this.data.task));
   }
 
+
+  // 保存
+  onClick() {
+
+  }
+
 }

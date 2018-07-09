@@ -22,8 +22,16 @@ export class RegisterComponent {
       name: [],
       password: [],
       repeat: [],
-      avatar: [img]
+      avatar: [img],
+      dateOfBirth: []
     });
+  }
+
+  onsubmit({ value, valid }, evt: Event) {
+    evt.preventDefault();
+    if (valid) {
+      console.log(value);
+    }
   }
 
 }

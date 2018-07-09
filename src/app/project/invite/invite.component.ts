@@ -22,4 +22,9 @@ export class InviteComponent implements OnInit {
   ngOnInit() {
   }
 
+  // 保存
+  onCLick() {
+
+  }
+
 }
