@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatListModule,
   MatToolbarModule, MatGridListModule, MatDialogModule, MatAutocompleteModule, MatMenuModule, MatCheckboxModule,
-  MatTooltipModule, MatDatepickerModule, MatRadioModule, MatNativeDateModule, MatSelectModule, MatSidenavModule
+  MatTooltipModule, MatDatepickerModule, MatRadioModule, MatNativeDateModule, MatSelectModule, MatSidenavModule,
+  MatButtonToggleModule, MatFormFieldModule
 } from "@angular/material";
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {DirectiveModule} from "../directive/directive.module";
@@ -34,7 +35,9 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatSidenavModule,
     DirectiveModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule,
+    MatFormFieldModule
   ],
   exports: [
     CommonModule,
@@ -59,7 +62,9 @@ import { AgeInputComponent } from './age-input/age-input.component';
     FormsModule,
     ReactiveFormsModule,
     ImageListSelectComponent,
-    AgeInputComponent
+    AgeInputComponent,
+    MatButtonToggleModule,
+    MatFormFieldModule
   ],
   declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
   entryComponents: [ConfirmDialogComponent]

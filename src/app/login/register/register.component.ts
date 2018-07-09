@@ -23,7 +23,7 @@ export class RegisterComponent {
       password: [],
       repeat: [],
       avatar: [img],
-      dateOfBirth: []
+      dateOfBirth: ['1990-01-01']
     });
   }
 
