@@ -1,5 +1,5 @@
-// export * from './auth';
-// export * from './err';
+export * from './auth.model';
+export * from './err.model';
 // export * from './prouser.model';
 // export * from './quser.model';
 // export * from './task-user.model';
