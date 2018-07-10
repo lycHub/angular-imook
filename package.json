@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json-server": "json-server mock/data.json -p 3306"
+    "json-server": "json-server mock/data.json --watch"
   },
   "private": true,
   "dependencies": {

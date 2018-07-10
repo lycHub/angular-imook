@@ -97,7 +97,7 @@ export class AgeInputComponent implements OnInit, ControlValueAccessor, OnDestro
     }));
 
 
-    const merged$ = merge(birthday$, age$).pipe(filter(_ => this.form.valid);
+    const merged$ = merge(birthday$, age$).pipe(filter(_ => this.form.valid));
     this.sub = merged$.subscribe(d => {
       // 将日期转为年龄
       const age = this.toAge(d.date);
