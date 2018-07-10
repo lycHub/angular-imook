@@ -49,7 +49,7 @@ export class ProjectListComponent implements OnDestroy {
 
   // 邀请组员
   launchInviteDialog(): void {
-    this.dialog.open(InviteComponent);
+    this.dialog.open(InviteComponent, {data: {members: []}});
   }
 
   // 修改项目

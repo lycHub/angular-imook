@@ -4,13 +4,14 @@ import {
   MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatListModule,
   MatToolbarModule, MatGridListModule, MatDialogModule, MatAutocompleteModule, MatMenuModule, MatCheckboxModule,
   MatTooltipModule, MatDatepickerModule, MatRadioModule, MatNativeDateModule, MatSelectModule, MatSidenavModule,
-  MatButtonToggleModule, MatFormFieldModule
+  MatButtonToggleModule, MatFormFieldModule, MatChipsModule
 } from "@angular/material";
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {DirectiveModule} from "../directive/directive.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
+import { ChipsListComponent } from './chips-list/chips-list.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { AgeInputComponent } from './age-input/age-input.component';
     FormsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatChipsModule
   ],
   exports: [
     CommonModule,
@@ -64,9 +66,11 @@ import { AgeInputComponent } from './age-input/age-input.component';
     ImageListSelectComponent,
     AgeInputComponent,
     MatButtonToggleModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ChipsListComponent,
+    MatChipsModule
   ],
-  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
+  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent, ChipsListComponent],
   entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }

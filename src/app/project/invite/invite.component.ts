@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {User} from "../../domain/user.model";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-invite',
@@ -7,24 +9,21 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InviteComponent implements OnInit {
-  items = [{
-    id: 1,
-    name: '张三'
-  }, {
-    id: 2,
-    name: '李四'
-  }, {
-    id: 3,
-    name: '王五'
-  }];
-  constructor() { }
+  members: User[] = [];
+
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<InviteComponent>) { }
 
   ngOnInit() {
+    // 接收项目中现有的成员
+    this.members = [...this.data.members];
   }
 
   // 保存
-  onCLick() {
-
+  onSubmit(evt: Event, {valid, value}) {
+    evt.preventDefault();
+    if (valid) {
+      this.dialogRef.close(this.members);
+    }
   }
 
 }

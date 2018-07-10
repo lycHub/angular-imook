@@ -12,9 +12,9 @@ export class UserService {
   constructor(@Inject('BASE_CONFIG') private config, private http: HttpClient) { }
 
   // 搜索用户
-  searchUsers(filter: string): Observable<User[]> {
+  searchUsers(str: string): Observable<User[]> {
     const uri = `${this.config.uri}/${this.domain}`;
-    return this.http.get(uri, {params: {'email_like': filter}});
+    return this.http.get(uri, {params: {'name_like': str}});
   }
 
 
@@ -51,7 +51,7 @@ export class UserService {
     // 该项目下需要的用户
     const memberIds = project.members ? project.members : [];
     return from(memberIds).pipe(
-    // 获取到每一个用户的具体信息
+      // 获取到每一个用户的具体信息
       switchMap(id => {
         const uri = `${this.config.uri}/${this.domain}/${id}`;
         return this.http.get(uri);
