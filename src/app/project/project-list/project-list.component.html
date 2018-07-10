@@ -3,8 +3,8 @@
     *ngFor="let project of projects"
     [item]="project"
     (onInvite)="launchInviteDialog()"
-    (onEdit)="launchUpdateDialog()"
-    (onDel)="launchConfirmDialog(project.id)">
+    (onEdit)="launchUpdateDialog(project)"
+    (onDel)="launchConfirmDialog(project)">
 
   </app-project-item>
 

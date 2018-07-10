@@ -37,7 +37,8 @@ export class ProjectService {
   del(project: Project): Observable<Project> {
     // 删除项目下的所有task-list和task
     // mergeMap就算有个新的任务流进来，那之前的还是要继续删
-    const delTasks$ = from(project.taskLists).pipe(mergeMap(listId => this.http.delete(`${this.api.uri}/taskLists/${listId}`)), count());
+    const delTasks$ = from(project.taskLists ? project.taskLists : [])
+      .pipe(mergeMap(listId => this.http.delete(`${this.api.uri}/taskLists/${listId}`)), count());
 
     return delTasks$.pipe(switchMap(_ => this.http.delete(`${this.api.uri}/${this.domain}/${project.id}`)), mapTo(project));
   }

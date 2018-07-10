@@ -56,9 +56,9 @@
       ]
     },
     {
-      "name": "某某公司 ERP 系统",
+      "name": "某某公司 ERP 系统1",
       "desc": "为某某公司开发的定制化 ERP 系统",
-      "coverImg": "/assets/img/covers/20.jpg",
+      "coverImg": "/assets/img/covers/5.jpg",
       "members": [
         "37489e0c-df34-c261-71c4-ce75357e3035"
       ],
@@ -68,6 +68,12 @@
         "BkWpk7jGZb",
         "H1fTyXjMWW"
       ]
+    },
+    {
+      "name": "大大撒旦",
+      "desc": "dadad",
+      "coverImg": "/assets/img/covers/8.jpg",
+      "id": "_3OMhbR"
     }
   ],
   "taskLists": [
