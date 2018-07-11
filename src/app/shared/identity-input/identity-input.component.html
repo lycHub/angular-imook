@@ -1,5 +1,5 @@
 <div>
-  <mat-select placeholder="证件类型" (change)="onIdTypeChange($event.value)" [(ngModel)]="identity">
+  <mat-select placeholder="证件类型" (ngModelChange)="onIdTypeChange($event)" [(ngModel)]="identity">
     <mat-option *ngFor="let type of identityTypes" [value]="type.value">{{type.label}}</mat-option>
   </mat-select>
 </div>

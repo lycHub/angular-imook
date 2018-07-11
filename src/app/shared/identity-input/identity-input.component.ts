@@ -1,7 +1,9 @@
 import {Component, forwardRef, OnDestroy, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Identity, IdentityType} from "../../domain";
-import {combineLatest, Observable, Subject} from "rxjs/index";
+import {combineLatest, Observable, Subject, Subscription} from "rxjs/index";
+import {extractInfo, isValidAddr} from "../../utils/identity";
+import {isValidDate} from "../../utils/date";
 
 @Component({
   selector: 'app-identity-input',
@@ -45,21 +47,25 @@ export class IdentityInputComponent implements OnInit, ControlValueAccessor, OnD
 
   private _idType = new Subject<IdentityType>();
   private _idNo = new Subject<string>();
+  private sub: Subscription;
 
 
 
 
-  private propagateChanged = (value: any) => () => null;
+  private propagateChanged = (value: Identity) => () => null;
   private onTouched: () => void = () => null;
   constructor() { }
 
   ngOnInit() {
-    const val$ = combineLatest(this.idType, this.idNo, (_type, _no) => {
+    this.sub = combineLatest(this.idType, this.idNo, (_type, _no) => {
       return {
         identityType: _type,
         identityNo: _no
       }
+    }).subscribe(identity => {
+      this.propagateChanged(identity);
     });
+
   }
 
 
@@ -83,12 +89,75 @@ export class IdentityInputComponent implements OnInit, ControlValueAccessor, OnD
     return this._idNo.asObservable();
   }
 
-  validate(c: FormControl): {[key: string]: any} {
 
+  validate(c: FormControl): {[key: string]: any} {
+    if (!c.value) {
+      return null;
+    }
+    switch (c.value.identityType) {
+      case IdentityType.IdCard: {
+        return this.validateIdNumber(c);
+      }
+      case IdentityType.Passport: {
+        return this.validatePassport(c);
+      }
+      case IdentityType.Military: {
+        return this.validateMilitary(c);
+      }
+      case IdentityType.Insurance:
+      default: {
+        return null;
+      }
+    }
   }
 
 
-  writeValue(obj: any): void {
+  // 身份证验证
+  private validateIdNumber(c: FormControl): {[key: string]: any} {
+    const val = c.value.identityNo;
+    if (val.length !== 18) {
+      return {
+        idNotValid:  true
+      };
+    }
+    const pattern = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}[x0-9]$/;
+    let result = false;
+    if (pattern.test(val)) {
+      const info = extractInfo(val);
+      if (isValidAddr(info.addrCode) && isValidDate(info.dateOfBirth)) {
+        result = true;
+      }
+    }
+    return result ? null : {idNotValid:  true};
+  }
+
+  private validatePassport(c: FormControl): {[key: string]: any} {
+    const value = c.value.identityNo;
+    if (value.length !== 9) {
+      return {idNotValid: true};
+    }
+    const pattern = /^[GgEe]\d{8}$/;
+    let result = false;
+    if (pattern.test(value)) {
+      result = true;
+    }
+    return result ? null : {idNotValid:  true};
+  }
+
+  private validateMilitary(c: FormControl): {[key: string]: any} {
+    const value = c.value.identityNo;
+    const pattern = /[\u4e00-\u9fa5](字第)(\d{4,8})(号?)$/;
+    let result = false;
+    if (pattern.test(value)) {
+      result = true;
+    }
+    return result ? null : {idNotValid:  true};
+  }
+
+  writeValue(obj: Identity): void {
+    if (obj) {
+      this.identity = obj;
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -100,5 +169,6 @@ export class IdentityInputComponent implements OnInit, ControlValueAccessor, OnD
   }
 
   ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
   }
 }

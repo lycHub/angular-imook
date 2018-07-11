@@ -4,7 +4,7 @@ import {
   MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatListModule,
   MatToolbarModule, MatGridListModule, MatDialogModule, MatAutocompleteModule, MatMenuModule, MatCheckboxModule,
   MatTooltipModule, MatDatepickerModule, MatRadioModule, MatNativeDateModule, MatSelectModule, MatSidenavModule,
-  MatButtonToggleModule, MatFormFieldModule, MatChipsModule
+  MatButtonToggleModule, MatFormFieldModule, MatChipsModule, MatTabsModule
 } from "@angular/material";
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {DirectiveModule} from "../directive/directive.module";
@@ -41,7 +41,8 @@ import { AreaListComponent } from './area-list/area-list.component';
     ReactiveFormsModule,
     MatButtonToggleModule,
     MatFormFieldModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule
   ],
   exports: [
     CommonModule,
@@ -72,7 +73,8 @@ import { AreaListComponent } from './area-list/area-list.component';
     ChipsListComponent,
     MatChipsModule,
     IdentityInputComponent,
-    AreaListComponent
+    AreaListComponent,
+    MatTabsModule
   ],
   declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent, ChipsListComponent, IdentityInputComponent, AreaListComponent],
   entryComponents: [ConfirmDialogComponent]
