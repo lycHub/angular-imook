@@ -1,0 +1,20 @@
+const count$ = Rx.Observable.interval(1000);
+
+const sub1 = count$.subscribe(val => console.log(val));
+
+setTimeout(function(){
+	// 这里每次都会重新发出值
+  const sub2 = count$.subscribe(val => console.log(val));
+}, 2000);
+
+
+
+/*share操作符可以把Observable变成热的*/
+const count$ = Rx.Observable.interval(1000).share();
+
+const sub1 = count$.subscribe(val => console.log(val));
+
+setTimeout(function(){
+	// 这里每次都会接着上面发出值
+  const sub2 = count$.subscribe(val => console.log(val));
+}, 2000);

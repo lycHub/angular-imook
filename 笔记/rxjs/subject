@@ -1,0 +1,42 @@
+const count$ = Rx.Observable.interval(1000).take(5);
+
+const subject = new Rx.Subject();
+
+const observer1 = {
+  next: val => console.log('1:' + val),
+  error: err => console.error('1:' + err),
+  complete: () => console.log('1 is complete')
+}
+
+const observer2 = {
+  next: val => console.log('2:' + val),
+  error: err => console.error('2:' + err),
+  complete: () => console.log('2 is complete')
+}
+
+// 如果需要指定在某个时间点发出count$
+
+1.正常写法(冷)
+count$.subscribe(observer1);
+
+setTimeout(function(){
+  count$.subscribe(observer2);
+}, 2000);
+
+
+
+2.改成subject(热)
+subject.subscribe(observer1);
+
+/*
+一旦有了订阅之后，还可以添加新的值
+subject(11)
+subject(22)
+11 22 0 1 2 .....
+*/
+
+setTimeout(function(){
+  subject.subscribe(observer2);
+}, 2000);
+
+count$.subscribe(subject);
