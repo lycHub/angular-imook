@@ -14,6 +14,7 @@ import {TaskModule} from "../task/task.module";
 import {AppRoutingModule} from "../app-routing.module";
 import {ServicesModule} from "../services/services.module";
 import {AppStoreModule} from "../ngrx/reducers/index";
+import {AppEffectsModule} from "../ngrx/effects/index";
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {AppStoreModule} from "../ngrx/reducers/index";
     LoginModule,
     ProjectModule,
     TaskModule,
-    AppStoreModule
+    AppStoreModule,
+    AppEffectsModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [
