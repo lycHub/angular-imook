@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Quote} from '../../domain/quote.model';
 import {Observable} from "rxjs/index";
@@ -12,7 +12,7 @@ import {LoadAction} from "../../ngrx/actions/quote.action";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form: FormGroup;
   quote$: Observable<Quote>;
 
@@ -27,9 +27,8 @@ export class LoginComponent implements OnInit {
 
     // this.quote$ = this.store$.pipe(select('reducer'), map(state => state.quote.quote));
     this.quote$ = this.store$.pipe(select('reducer'), pluck('quote', 'quote'));
-  }
 
-  ngOnInit() {
+
     // this.quoteServe$.getQuote().subscribe(quote => {
     //   this.store$.dispatch(new LoadSuccessAction(quote));
     // });
