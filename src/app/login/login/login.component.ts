@@ -26,7 +26,7 @@ export class LoginComponent {
     // 参数state指的是全局文件导出的interface State，所以state.quote指的是quote.reducer.ts中的State
 
     // this.quote$ = this.store$.pipe(select('reducer'), map(state => state.quote.quote));
-    this.quote$ = this.store$.pipe(select('reducer'), pluck('quote', 'quote'));
+    this.quote$ = this.store$.pipe(select('reducer'), pluck('quote'));
 
 
     // this.quoteServe$.getQuote().subscribe(quote => {
