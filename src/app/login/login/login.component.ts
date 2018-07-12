@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Quote} from '../../domain/quote.model';
 import {Observable} from "rxjs/index";
 import {select, Store} from "@ngrx/store";
 import * as fromRoot from '../../ngrx/reducers';
 import {pluck} from "rxjs/internal/operators";
 import {LoadAction} from "../../ngrx/actions/quote.action";
+import {LoginAction} from "../../ngrx/actions/auth.action";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
 
   constructor(private store$: Store<fromRoot.State>, private fb: FormBuilder) {
     this.form = this.fb.group({
-      email: ['', [Validators.email, this.validate]],
+      email: ['', [Validators.email]],
       password: [null, Validators.required]
     });
 
@@ -39,23 +40,24 @@ export class LoginComponent {
 
   onSubmit({value, valid}, evt: Event) {
     evt.preventDefault();
-    console.log(value, valid);
 
     // 临时指定验证器
     // this.form.controls['email'].setValidators(this.validate);
+
+    this.store$.dispatch(new LoginAction(value));
   }
 
 
-  private validate(c: FormControl): {[key: string]: any} {
-    if (!c.value) {
-      return null;
-    } else {
-      const pattern = /^wang+/;
-      if (pattern.test(c.value)) {
-        return null;
-      } else {
-        return {emailNotValid: '要以wang开头'};
-      }
-    }
-  }
+  // private validate(c: FormControl): {[key: string]: any} {
+  //   if (!c.value) {
+  //     return null;
+  //   } else {
+  //     const pattern = /^wang+/;
+  //     if (pattern.test(c.value)) {
+  //       return null;
+  //     } else {
+  //       return {emailNotValid: '要以wang开头'};
+  //     }
+  //   }
+  // }
 }

@@ -15,17 +15,17 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
-  constructor(private payload: null) {}
+  constructor(public payload: null) {}
 }
 
 export class LoadSuccessAction implements Action {
   type = ActionTypes.LOAD_SUCCESS;
-  constructor(private payload: Quote) {}
+  constructor(public payload: Quote) {}
 }
 
 export class LoadFailAction implements Action {
   type = ActionTypes.LOAD_FAIL;
-  constructor(private payload: string) {}
+  constructor(public payload: string) {}
 }
 
 export type QuoteActions = LoadAction | LoadSuccessAction | LoadFailAction;

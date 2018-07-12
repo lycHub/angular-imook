@@ -3,20 +3,26 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../../../environments/environment";
 import {NgModule} from "@angular/core";
 import * as fromQuote from './quote.reducer';
+import * as fromAuth from './auth.reducer';
+import {Auth} from "../../domain/auth.model";
+import {routerReducer, StoreRouterConnectingModule} from "@ngrx/router-store";
 
 
 // 全局state
 export interface State {
   quote: fromQuote.State;
+  auth: Auth;
 }
 
 // 全局初始值
 const initialState: State = {
-  quote: fromQuote.initialState
+  quote: fromQuote.initialState,
+  auth: fromAuth.initialState
 };
 
 const reducers = {
-  quote: fromQuote.reducer
+  quote: fromQuote.reducer,
+  auth: fromAuth.reducer
 };
 
 // 合并所有reducer
@@ -37,7 +43,8 @@ export function reducer(state = initialState, action: any): State {
 
 @NgModule({
   imports: [
-    StoreModule.forRoot({reducer}),   // 引入全局reducer
+    StoreModule.forRoot({reducer,  router: routerReducer}),   // 引入全局reducer
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
     StoreDevtoolsModule.instrument({logOnly: environment.production})
   ]
 })

@@ -4,6 +4,9 @@ import {debounceTime, filter, tap} from "rxjs/internal/operators";
 import {Subscription} from "rxjs/index";
 import {extractInfo, getAddrByCode, isValidAddr} from "../../utils/identity";
 import {isValidDate} from "../../utils/date";
+import {Store} from "@ngrx/store";
+import * as fromRoot from '../../ngrx/reducers';
+import {RegisterAction} from "../../ngrx/actions/auth.action";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +19,7 @@ export class RegisterComponent implements OnDestroy {
   private _sub: Subscription;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store$: Store<fromRoot.State>) {
     // avatars:svg-1
     const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     this.items = nums.map(item => `avatars:svg-${item}`);
@@ -55,7 +58,7 @@ export class RegisterComponent implements OnDestroy {
   onsubmit({ value, valid }, evt: Event) {
     evt.preventDefault();
     if (valid) {
-      console.log(value);
+      this.store$.dispatch(new RegisterAction(value));
     }
   }
 
