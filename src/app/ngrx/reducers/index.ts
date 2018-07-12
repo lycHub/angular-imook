@@ -3,11 +3,12 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../../../environments/environment";
 import {NgModule} from "@angular/core";
 import * as fromQuote from './quote.reducer';
+import {Quote} from "../../domain/quote.model";
 
 
 // 全局state
 export interface State {
-  quote: fromQuote.State;
+  quote: Quote;
 }
 
 // 全局初始值
