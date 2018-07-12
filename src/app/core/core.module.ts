@@ -13,6 +13,7 @@ import {ProjectModule} from "../project/project.module";
 import {TaskModule} from "../task/task.module";
 import {AppRoutingModule} from "../app-routing.module";
 import {ServicesModule} from "../services/services.module";
+import {AppStoreModule} from "../ngrx/reducers/index";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {ServicesModule} from "../services/services.module";
     ServicesModule.forRoot(),
     LoginModule,
     ProjectModule,
-    TaskModule
+    TaskModule,
+    AppStoreModule
   ],
   declarations: [HeaderComponent, SidebarComponent, FooterComponent],
   exports: [

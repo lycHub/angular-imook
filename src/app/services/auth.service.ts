@@ -24,8 +24,8 @@ export class AuthService {
   register(user: User): Observable<Auth> {
     const uri = `${this.config.uri}/users`;
     return this.http.get(uri, {params: {'email': user.email}}).pipe(switchMap(res => {
-        if (res.length > 0) throw new Error('该邮箱已注册');
-        return this.http.post(uri, JSON.stringify(user), {headers: this.headers}).pipe(map(r => ({token: TOKEN, user: r})));
+        // if (res.length > 0) throw new Error('该邮箱已注册');
+        return this.http.post(uri, JSON.stringify(user), {headers: this.headers});
       }));
   }
 
@@ -39,7 +39,7 @@ export class AuthService {
   login(email: string, password: string): Observable<Auth> {
     const uri = `${this.config.uri}/users`;
     return this.http.get(uri, {params: {'email': email, 'password': password}}).pipe(map(res => {
-      if (res.length === 0) throw new Error('登陆失败');
+      // if (res.length === 0) throw new Error('登陆失败');
       return {
         token: TOKEN,
         user: res[0]

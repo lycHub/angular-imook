@@ -49,8 +49,8 @@ export class TaskListService {
 
   // 拖拽交换两个tasklist的顺序(order字段)，src => drag  target => drop
   swapOrder(src: TaskList, target: TaskList): Observable<TaskList[]> {
-    const dragUri = `${this.config.uri}/${this.domain}/${src.id}`;
-    const dropUri = `${this.config.uri}/${this.domain}/${target.id}`;
+    const dragUri = `${this.api.uri}/${this.domain}/${src.id}`;
+    const dropUri = `${this.api.uri}/${this.domain}/${target.id}`;
     const drag$ = this.http.patch(dragUri, JSON.stringify({order: target.order}), {headers: this.headers});
     const drop$ = this.http.patch(dropUri, JSON.stringify({order: src.order}), {headers: this.headers});
     return concat(drag$, drop$).pipe(reduce((arr, list) => {

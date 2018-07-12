@@ -1,5 +1,4 @@
-import {State} from "@ngrx/store";
-import {QUOTE_FAIL, QUOTE_SUCCESS} from "../actions/quote.action";
+import {ActionTypes, QuoteActions} from "../actions/quote.action";
 import {Quote} from "../../domain/quote.model";
 
 export interface State {
@@ -15,15 +14,21 @@ export const initialState: State = {
   }
 };
 
-export function reducer(state = initialState, action: {type: string; payload: any}): State {
+export function reducer(state = initialState, action: QuoteActions): State {
   switch (action.type) {
-    case QUOTE_SUCCESS:
-      return {...state, quote: action.payload};
+    case ActionTypes.LOAD_SUCCESS:
+      console.log('QUOTE_SUCCESS');
+      return {...state, quote: <Quote>action.payload};
 
-    case QUOTE_FAIL:
+    case ActionTypes.LOAD_FAIL:
+      console.log('QUOTE_FAIL');
       return state;
 
     default:
+      console.log('default');
       return state;
   }
 }
+
+
+// export const getQuote = (state: State) => state.quote;

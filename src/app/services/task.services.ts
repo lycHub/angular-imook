@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {from, Observable} from "rxjs/index";
 import {Task} from "../domain";
-import {mapTo, mergeMap, reduce} from "rxjs/internal/operators";
+import {map, mapTo, mergeMap, reduce} from "rxjs/internal/operators";
 import {TaskList} from "../domain/task-list.model";
 
 @Injectable()
@@ -27,7 +27,7 @@ export class TaskService {
       createDate: task.createDate
     };
     // const addTaskRef$ = this.addTaskRef()
-    return this.http.post(uri, JSON.stringify(toAdd), {headers: this.headers});
+    return this.http.post(uri, JSON.stringify(toAdd), {headers: this.headers}).pipe(map(res => res as Task));
 
   }
 
@@ -42,7 +42,7 @@ export class TaskService {
       priority: task.priority,
       remark: task.remark
     };
-    return this.http.patch(uri, JSON.stringify(toUpdate), {headers: this.headers});
+    return this.http.patch(uri, JSON.stringify(toUpdate), {headers: this.headers}).pipe(map(res => res as Task));
   }
 
   del(task: Task): Observable<Task> {
@@ -59,14 +59,14 @@ export class TaskService {
   // GET 列表下的所有task
   get(taskListId: string): Observable<Task[]> {
     const uri = `${this.config.uri}/${this.domain}`;
-    return this.http.get(uri, {params: {taskListId}});
+    return this.http.get(uri, {params: {taskListId}}).pipe(map(res => res as Task[]));
   }
 
 
   // 移动任务
   move(taskId: string, taskListId: string): Observable<Task> {
     const uri = `${this.config.uri}/${this.domain}/${taskId}`;
-    return this.http.patch(uri, JSON.stringify({taskListId}), {headers: this.headers});
+    return this.http.patch(uri, JSON.stringify({taskListId}), {headers: this.headers}).pipe(map(res => res as Task));
   }
 
   // 把某列表的任务移到另一个列表去
@@ -81,7 +81,7 @@ export class TaskService {
   // 切换任务完成状态
   complete(task: Task): Observable<Task> {
     const uri = `${this.config.uri}/${this.domain}/${task.id}`;
-    return this.http.patch(uri, JSON.stringify({completed: !task.completed}), {headers: this.headers});
+    return this.http.patch(uri, JSON.stringify({completed: !task.completed}), {headers: this.headers}).pipe(map(res => res as Task));
   }
 
   // addTaskRef(user: User, taskId: string): Observable<User> {
