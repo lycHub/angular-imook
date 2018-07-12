@@ -2,10 +2,6 @@ import {Action} from "@ngrx/store";
 import {Quote} from "../../domain/quote.model";
 import {type} from "../../utils/type";
 
-// export const QUOTE = 'qute';
-// export const QUOTE_SUCCESS = 'Quote Success';
-// export const QUOTE_FAIL = 'Quote Fail';
-
 
 export const ActionTypes = {
   LOAD: type('[Quote] Load'),
@@ -15,17 +11,17 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
-  constructor(private payload: null) {}
+  constructor(public payload: null) {}
 }
 
 export class LoadSuccessAction implements Action {
   type = ActionTypes.LOAD_SUCCESS;
-  constructor(private payload: Quote) {}
+  constructor(public payload: Quote) {}
 }
 
 export class LoadFailAction implements Action {
   type = ActionTypes.LOAD_FAIL;
-  constructor(private payload: string) {}
+  constructor(public payload: string) {}
 }
 
 export type QuoteActions = LoadAction | LoadSuccessAction | LoadFailAction;
