@@ -3,7 +3,7 @@ import {NgModule} from "@angular/core";
 import {TaskHomeComponent} from "./task-home/task-home.component";
 const routes: Routes = [
   {
-    path: 'tasklists',
+    path: '',
     component: TaskHomeComponent
   }
 ];

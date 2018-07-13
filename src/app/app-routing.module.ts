@@ -9,12 +9,12 @@ const routes: Routes = [
   },
   {
     path: 'project',
-    redirectTo: '/project',
+    loadChildren: 'app/project#ProjectModule',
     pathMatch: 'full'
   },
   {
-    path: 'tasklist',
-    redirectTo: '/tasklist',
+    path: 'tasklists',
+    loadChildren: 'app/task#TaskModule',
     pathMatch: 'full'
   }
   // {path: '**',  redirectTo: '/login'}

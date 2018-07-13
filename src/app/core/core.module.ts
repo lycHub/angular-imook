@@ -9,8 +9,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
 import {loadSvgResources} from "../utils/svg";
 import {LoginModule} from "../login/login.module";
-import {ProjectModule} from "../project/project.module";
-import {TaskModule} from "../task/task.module";
 import {AppRoutingModule} from "../app-routing.module";
 import {ServicesModule} from "../services/services.module";
 import {AppStoreModule} from "../ngrx/reducers/index";
@@ -24,8 +22,8 @@ import {AppEffectsModule} from "../ngrx/effects/index";
     AppRoutingModule,
     ServicesModule.forRoot(),
     LoginModule,
-    ProjectModule,
-    TaskModule,
+    // ProjectModule,
+    // TaskModule,
     AppStoreModule,
     AppEffectsModule
   ],
