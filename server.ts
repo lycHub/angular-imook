@@ -34,6 +34,7 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
+
 // TODO: implement data requests securely
 app.get('/api/*', (req, res) => {
   res.status(404).send('data requests are not supported');
@@ -46,6 +47,10 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 app.get('*', (req, res) => {
   res.render('index', { req });
 });
+
+// app.use(function(req, res, next) {
+//   res.status(404).render('index', { req });
+// });
 
 // Start up the Node server
 app.listen(PORT, () => {
