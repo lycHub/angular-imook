@@ -37,7 +37,7 @@ import {AppStoreModule} from "../ngrx/reducers/index";
   ],
   providers: [
     {provide: 'BASE_CONFIG', useValue: {
-      uri: 'http://localhost:3000'
+      uri: 'http://localhost:3000/api'
     }},
   ]
 })
